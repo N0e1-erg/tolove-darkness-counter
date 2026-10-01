@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3aa9b0">
+<title>スロットカウンター</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f4f4f6;--panel:#fff;--text:#222;--muted:#8a8a8a;--line:#d8d8dc;--accent:#3aa9b0;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#16171b;--panel:#22242a;--text:#eee;--muted:#8a8c93;--line:#3a3c43}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:560px;margin:0 auto;padding:20px 14px 40px}
+h1{font-size:1.3rem;margin:8px 0 4px}
+.sub{color:var(--muted);font-size:.82rem;margin:0 0 20px}
+h2{font-size:1rem;margin:0 0 10px;padding:6px 0 6px 10px;border-left:5px solid var(--accent);border-bottom:2px solid var(--accent)}
+.card{display:flex;align-items:center;gap:14px;padding:16px;margin-bottom:12px;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;color:inherit;text-decoration:none;box-shadow:0 3px 0 rgba(0,0,0,.08);transition:transform .06s,box-shadow .06s}
+.card:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.swatch{flex:0 0 52px;height:52px;border-radius:14px;display:grid;grid-template-columns:1fr 1fr 1fr;overflow:hidden}
+.swatch i:nth-child(1){background:#f594a8}.swatch i:nth-child(2){background:#5fd3a8}.swatch i:nth-child(3){background:#b48be3}
+.info{flex:1;min-width:0}
+.info b{display:block;font-size:1.02rem}
+.info small{display:block;color:var(--muted);font-size:.78rem;margin-top:3px;line-height:1.5}
+.arrow{color:var(--muted);font-size:1.3rem}
+.foot{margin-top:28px;color:var(--muted);font-size:.72rem;line-height:1.7;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>スロットカウンター</h1>
+  <p class="sub">使いたい機種を選んでください</p>
+
+  <h2>機種一覧</h2>
+  <a class="card" href="./toloveru-counter.html">
+    <span class="swatch" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="info">
+      <b>L ToLOVEるダークネス</b>
+      <small>キャラ別ptカウンター・当選履歴・示唆メモ・過去のゲーム</small>
+    </span>
+    <span class="arrow" aria-hidden="true">›</span>
+  </a>
+
+  <p class="foot">データはこの端末のブラウザに保存されます。<br>ホーム画面に追加するとアプリのように使えます。</p>
+</div>
+<script>
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').then(r=>r.update()).catch(()=>{});});
+}
+</script>
+</body>
+</html>
