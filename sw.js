@@ -46,7 +46,7 @@ self.addEventListener('fetch', (event) => {
       })
       .catch(() =>
         caches.match(req, { ignoreSearch: true }).then((hit) =>
-          hit || (req.mode === 'navigate' ? caches.match('./index.html') : Response.error())
+          hit || (req.mode === 'navigate' ? caches.match('./toloveru-counter.html') : Response.error())
         )
       )
   );
